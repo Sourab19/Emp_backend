@@ -95,7 +95,7 @@ app.put("/api/employeelist", async (req, res) => {
     if (!updatedEmployee) {
       return res.status(404).json({ error: "Employee not found" });
     }
-    res.status(200).send("Update successful");
+    res.status(200).json({ message: "Update successful", updatedEmployee });
   } catch (error) {
     res.status(500).send("Update unsuccessful");
   }
