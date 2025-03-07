@@ -33,7 +33,7 @@ app.get("/api/employeelist", async (req, res) => {
     const data = await empModel.find();
     res.status(200).json(data);
   } catch (error) {
-    res.status(500).send("Error in  fetching  data");
+    res.status(500).json({ message:"Error in fetching data"});
   }
 });
 
@@ -44,7 +44,7 @@ app.get("/api/employeelist/:id", async (req, res) => {
     if (!employee) return res.status(404).json({ error: "Employee not found" });
     res.json(employee);
   } catch (error) {
-    res.status(500).send("Error in  fetching  data");
+    res.status(500).json({ message:"Error in fetching data"});
   }
 });
 
@@ -61,7 +61,7 @@ app.post("/api/employeelist", async (req, res) => {
     await newEmployee.save();
     res.status(201).json({ message: "Employee added", newEmployee });
   } catch (error) {
-    res.status(500).send("Error in  adding  data");
+    res.status(500).json({ message:"Add Employee unsuccessful"});
   }
 });
 
@@ -74,7 +74,7 @@ app.delete("/api/employeelist/:id", async (req, res) => {
 
     res.json({ message: "Employee deleted" });
   } catch (error) {
-    res.status(500).send("Error in  deleting  data");
+    res.status(500).json({ message:"Delete unsuccessful"});
   }
 });
 
@@ -97,7 +97,7 @@ app.put("/api/employeelist", async (req, res) => {
     }
     res.status(200).json({ message: "Update successful", updatedEmployee });
   } catch (error) {
-    res.status(500).send("Update unsuccessful");
+    res.status(500).json({ message:"Update unsuccessful"});
   }
 });
 //! dont delete this code. it connects the front end file.
